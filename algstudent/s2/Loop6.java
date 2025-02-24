@@ -1,15 +1,13 @@
-package algstudents.s12;
+package algorithmicsS2;
 
 public class Loop6 {
-	
-	public static long loop5(int n) {
+
+	public static long loop4(int n) {
 		long cont = 0;
-		for (int i = 1; i <= n; i++) //n
-			for (int j = 1; j <= n; j++) //n 
-				for (int k = 1; k <= n; k++) // n
-					for(int l = 1; l <=n; l++) // n
-						cont++;
-		//n^4
+		for (int i = 1; i <= n*n; i++)
+			for (int j = 1; j <= n; j++)
+				for (int k = 1; k <= n; k*=2)
+					cont++;
 		return cont;
 
 	}
@@ -26,11 +24,12 @@ public class Loop6 {
 			t1 = System.currentTimeMillis();
 
 			for (int repetitions = 1; repetitions <= nTimes; repetitions++)
-				c = loop5(n);
+				c = loop4(n);
 
 			t2 = System.currentTimeMillis();
 
 			System.out.println(n + "\t" + (t2 - t1) + "\t" + nTimes + "\t\t" + c);
 		} // for
 	} // main
+
 }
