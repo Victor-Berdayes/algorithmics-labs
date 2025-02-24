@@ -5,10 +5,10 @@ public class Loop3 {
 	public static long loop3(long n) {
 		long cont = 0;
 		long i = 1;
-		while (i <= 2 * n) {
-			for (long j = i; j >= 0; j -= 2)
-				for (long k = 1; k <= n; k *= 2)
-					cont++;
+		while (i <= 2 * n) { //2n
+			for (long j = i; j >= 0; j -= 2)//n
+				for (long k = 1; k <= n; k *= 2)//logn
+					cont++;//2n^2logn
 			i++;
 		}
 

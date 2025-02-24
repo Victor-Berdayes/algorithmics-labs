@@ -4,10 +4,10 @@ public class Loop4 {
 
 	public static long loop4(int n) {
 		long cont = 0;
-		for (int i = 1; i <= n; i++)
-			for (int j = 1; j <= i; j++)
-				for (int k = 1; k <= j; k++)
-					cont++;
+		for (int i = 1; i <= n; i++)//n
+			for (int j = 1; j <= i; j++)//n
+				for (int k = 1; k <= j; k++)//n
+					cont++;//n^3
 		return cont;
 
 	}

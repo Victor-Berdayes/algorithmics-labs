@@ -3,9 +3,9 @@ package algorithmicsS2;
 public class Loop7 {
 	public static long loop4(int n) {
 		long cont = 0;
-		for (int i = 1; i <= n*n; i++)
-			for (int j = 1; j <= n*n; j++)
-				cont++;
+		for (int i = 1; i <= n*n; i++) //n^2
+			for (int j = 1; j <= n*n; j++) //n^2
+				cont++; //n^4
 		return cont;
 
 	}
