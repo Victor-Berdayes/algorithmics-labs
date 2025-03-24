@@ -4,16 +4,20 @@ from helper import draw_coloured_map, generate_graph_map
 
 colors = ["red", "blue", "green", "yellow", "orange", "purple", "cyan", "magenta", "lime"]
 
-my_dict = {}
 
+def greedy(graph):
 
-def greedy(mapa):
-    color_ind = 0
+    colors_dict = {}
 
-    for node in mapa:
-        my_dict.update({node: colors[color_ind]})
-        color_neighbours(node, mapa[node])
+    for node in graph:
+        used_colors = {colors_dict[neigh] for neigh in graph[node] if neigh in colors_dict}
 
+        for color in colors:
+            if color not in used_colors:
+                colors_dict[node] = color
+                break
+
+    return colors_dict
 
 
 def color_neighbours(node, connections):
