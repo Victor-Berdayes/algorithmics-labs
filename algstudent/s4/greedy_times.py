@@ -13,6 +13,7 @@ def measure_greedy_time(n):
     return elapsed_time * 1000  # milisegundos
 
 if __name__ == "__main__":
-    for n in [32, 64, 128, 256, 512, 1024]:
+    for n in range (8, 65536, 8):
         elapsed_ms = measure_greedy_time(n)
         print(f"Greedy({n} nodes) took {elapsed_ms:.2f} ms")
+

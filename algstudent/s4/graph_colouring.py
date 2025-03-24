@@ -10,7 +10,10 @@ def greedy(graph):
     colors_dict = {}
 
     for node in graph:
-        used_colors = {colors_dict[neigh] for neigh in graph[node] if neigh in colors_dict}
+        used_colors = {colors_dict[neigh]
+                        for neigh in graph[node]
+                            if neigh in colors_dict
+                        }
 
         for color in colors:
             if color not in used_colors:
@@ -18,19 +21,6 @@ def greedy(graph):
                 break
 
     return colors_dict
-
-
-def color_neighbours(node, connections):
-
-    for neighbour in connections:
-        color_ind = 0;
-        while my_dict[node] == my_dict[neighbour]:
-            my_dict[neighbour] = colors[color_ind]
-
-            if color_ind == len(colors)-1:
-                color_ind = 0
-            else:
-                color_ind+=1
 
 
 if __name__ == "__main__":
