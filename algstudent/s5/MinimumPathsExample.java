@@ -3,6 +3,7 @@ package labs.en._25.algstudent.s5;
 //MINIMUM PATHS IN A GRAPH BY FLOYD-WARSHALL
 //IT IS A SOLUTION BY DYNAMIC PROGRAMMING
 //ITS TIME COMPLEXITY IS CUBIC O(n^3)
+
 public class MinimumPathsExample {
 	static String[] v; //node vector
 	static int[][] weights; //weight matrix
@@ -34,6 +35,7 @@ public class MinimumPathsExample {
 		System.out.println();
 		System.out.println("MINIMUM PATHS IN THE EXAMPLE GRAPH (for every pair of different nodes):");
 		System.out.println();
+		
 		for (int source = 0; source <= n-1; source++)
 			for (int target = 0; target <= n-1; target++)
 				if (source != target) {
@@ -49,16 +51,42 @@ public class MinimumPathsExample {
 	/* ITERATIVE WITH CUBIC COMPLEXITY O(n^3) */
 	static void floyd(int[][] weights, int[][] costs, int[][] p) {
 		int n = weights.length;
-		System.out.println("COMPLETE THIS METHOD");
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				costs[i][j] = weights[i][j];
+				p[i][j] = (weights[i][j] < 10000000 && i != j) ? i : -1;
+			}
+		}
+
+		for (int k = 0; k < n; k++) {
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < n; j++) {
+					if (costs[i][k] + costs[k][j] < costs[i][j]) {
+						costs[i][j] = costs[i][k] + costs[k][j];
+						p[i][j] = p[k][j];
+					}
+				}
+			}
+		}
 	}
 
 	static void minimumPath(String[] v, int[][] weights, int[][] costs, int[][] steps, int source, int target) {
-		System.out.println("COMPLETE THIS METHOD");
+		if (costs[source][target] == 10000000) {
+			System.out.print("THERE IS NO PATH");
+			return;
+		}
+		System.out.print(v[source] + "-->");
+		path(v, steps, source, target);
+		System.out.print(v[target]);
+		System.out.println();
 	}
 
 	/* IT IS RECURSIVE and WORST CASE is O(n), IT IS O(n) if you write all nodes */
 	static void path(String[] v, int[][] steps, int i, int j) {
-		System.out.println("COMPLETE THIS METHOD");
+		if (steps[i][j] == -1 || steps[i][j] == i)
+			return;
+		path(v, steps, i, steps[i][j]);
+		System.out.print(v[steps[i][j]] + "-->");
 	}
 
 	/* load the example cost matrix */
